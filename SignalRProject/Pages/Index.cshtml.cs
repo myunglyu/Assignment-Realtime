@@ -16,14 +16,19 @@ public class IndexModel : PageModel
         _userManager = userManager;
     }
 
-    public string? Username { get; set; }
+    public string Username { get; set; }
 
+    
     public async Task OnGetAsync()
     {
-        if (User.Identity?.IsAuthenticated ?? false)
+        if (User.Identity.IsAuthenticated)
         {
             var user = await _userManager.GetUserAsync(User);
-            Username = user?.UserName;
+            Username = user.UserName;
+        }
+        else 
+        {
+            Username = "Guest";
         }
     }
 }

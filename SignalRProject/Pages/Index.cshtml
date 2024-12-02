@@ -1,10 +1,10 @@
 ﻿@page
 @model IndexModel
 
-<div class="container">
+<div class="container-fluid">
     <div class="row p-1">
-        <div class="col-1">@Model.Username</div>
-        <div class="col-5"><input type="text" id="userInput" /></div>
+        @* <div class="col-1">@Model.Username</div> *@
+        <div class="col-5"><input type="hidden" id="userInput" value="@Model.Username" /></div>
     </div>
     <div class="row p-1">
         <div class="col-1">Message</div>
@@ -21,8 +21,19 @@
         </div>
     </div>
     <div class="row p-1">
-        <div class="col-6">
+        <div class="col-6" id="messagesContainer" style="height: calc(100vh - 300px); overflow-y: auto;">
             <ul id="messagesList"></ul>
+        </div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    Active Users
+                </div>
+                <div class="card-body">
+                    <ul id="usersList" class="list-unstyled" style="height: calc(100vh - 400px); overflow-y: auto;">
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>
